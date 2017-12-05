@@ -70,16 +70,10 @@ INRFormatLib.prototype.addDashes = function(input){
 	if (input.length <= 3)
 		return input;
 
-	var hunder = "," + input.substring(input.length-3);
+	var hundred  = "," + input.substring(input.length-3);
 	var rest = input.substring(0, input.length-3);
 
-	return rest.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + hunder;
-
-
-	// return input;
-	 // +  + hunder
-
-	return rest.replace(/\B(?=(\d{2})+(?!\d))/g, ",");
+	return rest.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + hundred;
 }
 
 
