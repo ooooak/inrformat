@@ -1,10 +1,13 @@
 const INRFormat = require('./INRFormat')
+const INRFormatCompressed = require('../dist/INRFormat')
+const INRFormatCompressedMini = require('../dist/INRFormat.mini')
 const assert = require('assert')
 
 let tests = [
 		['', ""],
 		[0, "0"],
 		["00", "00"],
+		["-00", "-00"],
 		["000", "000"],
 		["0000", "0,000"],
 		[10000, "10,000"],
@@ -26,9 +29,13 @@ let tests = [
 tests.forEach((item) => {
 	let input = item[0]
 	let expected = item[1]
-	let val = INRFormat(input)
-	assert.equal(val,expected, `expected: ${expected}, Found: ${val}`);
-	
+	let src = INRFormat(input)
+	let cmp = INRFormatCompressed(input)
+	let mini = INRFormatCompressedMini(input)
+
+	assert.equal(src, expected, `[src] expected: ${expected}, Found: ${src}`);	
+	assert.equal(cmp, expected, `[compressed] expected: ${expected}, Found: ${cmp}`);	
+	assert.equal(mini, expected, `[mini] expected: ${expected}, Found: ${mini}`);	
 })
 
 

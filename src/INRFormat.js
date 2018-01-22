@@ -1,61 +1,59 @@
-class INRFormat{
-	static init(input){
-		input += ''
-		let negativeNum
-		let float = ''
-		// is negative number
-		if (input.charAt(0) === '-'){
+(function(){
+class INRFormatLib{
+	static init(_input){
+		let input = INRFormatLib.clearInput(_input)
+		let float = '';
+
+		let negative = (input.charAt(0) === '-');
+		if (negative){
 	 		input = input.substr(1);
-			negativeNum = true;
 		}
 
-		input = INRFormat.clearInput(input);
-
-		let hasDot = input.indexOf(".");
-		if (hasDot !== -1){
-			let chunk = input.split(".");
+		let hasDot = (input.indexOf(".") !== -1);
+		if (hasDot){
+			let chunk = input.split(".");			
 			float = chunk[1];
-
 			if (float.length > 0){
 				input = chunk[0];
 			}
 		}
 
-		let ret;
-		if (float.length > 0){
-			ret = INRFormat.addDashes(input) + "." + float;
-		}else if (hasDot === true && float.length === 0){
-			ret = INRFormat.addDashes(input.replace(".", "")) + ".";
-		}else{
-			ret = INRFormat.addDashes(input);
+		let ret = INRFormatLib.addDashes(input);
+		if (hasDot){
+			ret += ".";
+		} 
+		if(float.length > 0){
+			ret += float;
 		}
 
-		return  negativeNum ? '-' + ret : ret;
+		return  negative ? ('-' + ret) : ret;
 	}
 
 	static isNumeric(str){
 	    return /^\d+$/.test(str);
 	}
 
+	/**
+	 * @param String
+	 * Remove all the extra input
+	 *  "-" allowed at start
+	 *  "." only one allowed
+	 */
 	static clearInput(input){
+		input += '';
 		let ret = '';
 		let firstDot = true;
 		for (let i = 0, len = input.length; i < len; i++) {
-		  let char = input.charAt(i);
-
-		  // skip 0 at start
-		  // if (ret.length == 0 && char === '0'){
-		  // 	continue;
-		  // }
-
-		  if (INRFormat.isNumeric(char)){
-		  	ret += char;
-		  } else if(char === '.' && firstDot){
-		  	ret += char;
-		  	firstDot = false;
-		  }
+			let char = input.charAt(i);
+			if (char === '-' && ret.length === 0){
+				ret += char;
+			}else if (INRFormatLib.isNumeric(char)){
+				ret += char;
+			} else if(char === '.' && firstDot){
+				ret += char;
+				firstDot = false;
+			}
 		}
-
 		return ret;
 	}
 
@@ -74,7 +72,8 @@ class INRFormat{
 
 
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined'){
-	module.exports = INRFormat.init;
+	module.exports = INRFormatLib.init;
 }else{
-	window.INRFormat = INRFormat.init;
+	window.INRFormat = INRFormatLib.init;
 }
+})();
