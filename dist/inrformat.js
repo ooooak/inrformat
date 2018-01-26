@@ -89,6 +89,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 	if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
 		module.exports = INRFormatLib.init;
 	} else {
-		window.INRFormat = INRFormatLib.init;
+		window.inrformat = INRFormatLib.init;
 	}
 })();

@@ -70,6 +70,6 @@ class INRFormatLib{
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined'){
 	module.exports = INRFormatLib.init;
 }else{
-	window.INRFormat = INRFormatLib.init;
+	window.inrformat = INRFormatLib.init;
 }
 })();
