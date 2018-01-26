@@ -4,7 +4,7 @@
   "description": "Indian rupee format",
   "main": "src/inrformat.js",
   "scripts": {
-    "test": "node ./src/inrformat.js",
+    "test": "node ./src/inrformat_test.js",
     "build": "babel ./src/inrformat.js --out-file ./dist/inrformat.js --presets=es2015 && babel ./dist/inrformat.js --out-file ./dist/inrformat.mini.js --presets=babili"
   },
   "repository": {

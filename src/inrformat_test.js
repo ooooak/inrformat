@@ -26,7 +26,6 @@ let tests = [
 		[" -0.2  ", "-0.2"],
 ]
 
-
 tests.forEach((item) => {
 	let input = item[0]
 	let expected = item[1]
@@ -37,11 +36,4 @@ tests.forEach((item) => {
 	assert.equal(src, expected, `[src] expected: ${expected}, Found: ${src}`);	
 	assert.equal(cmp, expected, `[compressed] expected: ${expected}, Found: ${cmp}`);	
 	assert.equal(mini, expected, `[mini] expected: ${expected}, Found: ${mini}`);	
-})
-
-
-tests.forEach((item) => {
-	let input = '1245678.00';
-	let expected = '12.45.678.00';
-	assert.equal(INRFormat(input, '.'), expected, `[mini] expected: ${expected}, Found: ${mini}`);	
 })
