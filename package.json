@@ -1,6 +1,6 @@
 {
   "name": "inrformat",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Indian rupee format",
   "main": "src/inrformat.js",
   "scripts": {
