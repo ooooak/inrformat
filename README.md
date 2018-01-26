@@ -1,17 +1,12 @@
 # INRFormat
 Indian number format
 
-
 # node
-
-
-	const INRFormat = require('inrformat');
-	console.log(INRFormat('222222')); // 2,22,222
-
+	const inrformat = require('inrformat');
 
 # Web
+	<script src="dist/inrformat.mini.js"></script>
 
-	<script src="dist/INRFormat.mini.js"></script>
-
-	// then you can do
-	console.log(INRFormat('222222')); // 2,22,222
+	console.log(inrformat('123.00')); // 123.00
+	console.log(inrformat('123')); // 123
+	console.log(inrformat('123456.00')); // 1,23,456.00
