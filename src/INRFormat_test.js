@@ -1,6 +1,6 @@
-const INRFormat = require('./INRFormat')
-const INRFormatCompressed = require('../dist/INRFormat')
-const INRFormatCompressedMini = require('../dist/INRFormat.mini')
+const INRFormat = require('./inrformat')
+const INRFormatCompressed = require('../dist/inrformat')
+const INRFormatCompressedMini = require('../dist/inrformat.mini')
 const assert = require('assert')
 
 let tests = [

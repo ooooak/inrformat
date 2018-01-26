@@ -1,9 +1,8 @@
 (function(){
 class INRFormatLib{
-	static init(_input){
-		let input = INRFormatLib.clearInput(_input)
+	static init(_input, sp = ','){
 		let float = '';
-
+		let input = INRFormatLib.clearInput(_input)
 		let negative = (input.charAt(0) === '-');
 		if (negative){
 	 		input = input.substr(1);
@@ -18,7 +17,7 @@ class INRFormatLib{
 			}
 		}
 
-		let ret = INRFormatLib.addDashes(input);
+		let ret = INRFormatLib.addDashes(input, sp);
 		if (hasDot){
 			ret += ".";
 		} 
@@ -57,16 +56,13 @@ class INRFormatLib{
 		return ret;
 	}
 
-	
-
-	static addDashes(input){
+	static addDashes(input, sp){
 		if (input.length <= 3)
 			return input;
-
-		let hundred  = "," + input.substring(input.length-3);
-		let rest = input.substring(0, input.length-3);
-
-		return rest.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + hundred;
+		
+		return input.substring(0, input.length-3)
+					.replace(/\B(?=(\d{2})+(?!\d))/g, sp) 
+					+ sp + input.substring(input.length-3);
 	}
 }
 
