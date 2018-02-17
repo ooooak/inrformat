@@ -1,8 +1,8 @@
 (function(){
 class INRFormatLib{
-	static init(_input, sp = ','){
+	static init(_input){
 		let float = '';
-		let input = INRFormatLib.clearInput(_input)
+		let input = INRFormatLib.clearInput(_input);
 		let negative = (input.charAt(0) === '-');
 		if (negative){
 	 		input = input.substr(1);
@@ -10,17 +10,17 @@ class INRFormatLib{
 
 		let hasDot = (input.indexOf(".") !== -1);
 		if (hasDot){
-			let chunk = input.split(".");			
+			let chunk = input.split(".");
 			float = chunk[1];
 			if (float.length > 0){
 				input = chunk[0];
 			}
 		}
 
-		let ret = INRFormatLib.addDashes(input, sp);
+		let ret = INRFormatLib.addDashes(input);
 		if (hasDot){
 			ret += ".";
-		} 
+		}
 		if(float.length > 0){
 			ret += float;
 		}
@@ -56,16 +56,16 @@ class INRFormatLib{
 		return ret;
 	}
 
-	static addDashes(input, sp){
-		if (input.length <= 3)
-			return input;
-		
-		return input.substring(0, input.length-3)
-					.replace(/\B(?=(\d{2})+(?!\d))/g, sp) 
-					+ sp + input.substring(input.length-3);
+	static addDashes(input){
+		if (input.length <= 3){
+      return input;
+    }else{
+      return input.substring(0, input.length-3)
+            .replace(/\B(?=(\d{2})+(?!\d))/g, ',')
+            + ',' + input.substring(input.length-3);
+    }
 	}
 }
-
 
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined'){
 	module.exports = INRFormatLib.init;
