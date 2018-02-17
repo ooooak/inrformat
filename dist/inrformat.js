@@ -13,8 +13,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		_createClass(INRFormatLib, null, [{
 			key: 'init',
 			value: function init(_input) {
-				var sp = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : ',';
-
 				var float = '';
 				var input = INRFormatLib.clearInput(_input);
 				var negative = input.charAt(0) === '-';
@@ -31,7 +29,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 					}
 				}
 
-				var ret = INRFormatLib.addDashes(input, sp);
+				var ret = INRFormatLib.addDashes(input);
 				if (hasDot) {
 					ret += ".";
 				}
@@ -76,10 +74,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 			}
 		}, {
 			key: 'addDashes',
-			value: function addDashes(input, sp) {
-				if (input.length <= 3) return input;
-
-				return input.substring(0, input.length - 3).replace(/\B(?=(\d{2})+(?!\d))/g, sp) + sp + input.substring(input.length - 3);
+			value: function addDashes(input) {
+				if (input.length <= 3) {
+					return input;
+				} else {
+					return input.substring(0, input.length - 3).replace(/\B(?=(\d{2})+(?!\d))/g, ',') + ',' + input.substring(input.length - 3);
+				}
 			}
 		}]);
 
