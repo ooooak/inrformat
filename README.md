@@ -4,7 +4,7 @@ Indian number format
 
 Install 
 ----------
-npm install inrformat
+> npm install inrformat
 
 # node
 	const inrformat = require('inrformat');
