@@ -1,5 +1,10 @@
-# INRFormat
+INRFormat
+-----------------
 Indian number format
+
+Install 
+----------
+npm install inrformat
 
 # node
 	const inrformat = require('inrformat');
@@ -9,7 +14,7 @@ Indian number format
 	console.log(inrformat('123456.00')); // 1,23,456.00
 
 
-# Web
+# Workes well with Web
 	<script src="dist/inrformat.mini.js"></script>
 
 	console.log(inrformat('123.00')); // 123.00
